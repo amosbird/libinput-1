@@ -769,7 +769,7 @@ tp_tap_dragging3_wait_handle_event(struct tp_dispatch *tp,
 		break;
 	case TAP_EVENT_RELEASE:
 		log_bug_libinput(libinput,
-				 "invalid tap event, no fingers are down\n");
+				 "invalid tap event, release when no fingers are down\n");
 		break;
 	case TAP_EVENT_TOUCH:
 		tp->tap.state = TAP_STATE_DRAGGING_3_OR_TAP;
@@ -777,7 +777,7 @@ tp_tap_dragging3_wait_handle_event(struct tp_dispatch *tp,
 		break;
 	case TAP_EVENT_MOTION:
 		log_bug_libinput(libinput,
-				 "invalid tap event, no fingers are down\n");
+				 "invalid tap event, motion when no fingers are down\n");
 		break;
 	case TAP_EVENT_TIMEOUT:
 		tp->tap.state = TAP_STATE_IDLE;
@@ -1120,7 +1120,16 @@ tp_tap_handle_state(struct tp_dispatch *tp, uint64_t time)
 		filter_motion = 1;
 		break;
 
-	default:
+	case TAP_STATE_IDLE:
+	case TAP_STATE_HOLD:
+	case TAP_STATE_TOUCH_2_HOLD:
+	case TAP_STATE_TOUCH_2_RELEASE:
+	case TAP_STATE_DRAGGING:
+	case TAP_STATE_DRAGGING_WAIT:
+	case TAP_STATE_DRAGGING_2:
+	case TAP_STATE_DRAGGING_3:
+	case TAP_STATE_TOUCH_3_HOLD:
+	case TAP_STATE_DEAD:
 		break;
 
 	}
