@@ -696,7 +696,7 @@ uint32_t
 tp_touch_get_edge(const struct tp_dispatch *tp, const struct tp_touch *t);
 
 void
-tp_init_gesture(struct tp_dispatch *tp);
+tp_init_gesture(struct tp_dispatch *tp, struct evdev_device *device);
 
 void
 tp_remove_gesture(struct tp_dispatch *tp);

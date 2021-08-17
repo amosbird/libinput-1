@@ -319,3 +319,10 @@ LIBINPUT_1.19 {
 	libinput_event_pointer_get_scroll_value_v120;
 	libinput_event_pointer_get_scroll_value;
 } LIBINPUT_1.15;
+
+LIBINPUT_1.20 {
+	libinput_device_config_has_three_finger_drag;
+	libinput_device_config_get_three_finger_drag_enabled;
+	libinput_device_config_set_three_finger_drag_enabled;
+	libinput_device_config_get_default_three_finger_drag_enabled;
+} LIBINPUT_1.19;

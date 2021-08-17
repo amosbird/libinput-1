@@ -210,6 +210,7 @@ options = {
         "natural-scrolling",
         "left-handed",
         "dwt",
+        "three-finger-drag",
     ],
     # options with distinct values
     "enums": {

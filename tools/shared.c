@@ -104,6 +104,7 @@ tools_init_options(struct tools_options *options)
 	options->drag = -1;
 	options->drag_lock = -1;
 	options->natural_scroll = -1;
+	options->three_finger_drag = -1;
 	options->left_handed = -1;
 	options->middlebutton = -1;
 	options->dwt = -1;
@@ -265,6 +266,12 @@ tools_parse_option(int option,
 			 sizeof(options->match),
 			 "%s",
 			 optarg);
+		break;
+	case OPT_THREE_FINGER_DRAG_ENABLE:
+		options->three_finger_drag = 1;
+		break;
+	case OPT_THREE_FINGER_DRAG_DISABLE:
+		options->three_finger_drag = 0;
 		break;
 	}
 
@@ -428,6 +435,9 @@ tools_device_apply_config(struct libinput_device *device,
 	if (options->natural_scroll != -1)
 		libinput_device_config_scroll_set_natural_scroll_enabled(device,
 									 options->natural_scroll);
+	if (options->three_finger_drag != -1)
+		libinput_device_config_set_three_finger_drag_enabled(device,
+									 options->three_finger_drag);
 	if (options->left_handed != -1)
 		libinput_device_config_left_handed_set(device, options->left_handed);
 	if (options->middlebutton != -1)
