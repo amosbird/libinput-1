@@ -505,6 +505,7 @@ tp_gesture_is_quick_hold(struct tp_dispatch *tp)
 static bool
 tp_gesture_use_hold_timer(struct tp_dispatch *tp)
 {
+	return true;
 	/* When tap is not enabled, always use the timer */
 	if (!tp->tap.enabled)
 		return true;
