@@ -1757,8 +1757,8 @@ tp_process_state(struct tp_dispatch *tp, uint64_t time)
 		/* 	tp_motion_history_reset(t); */
 		/* } */
 
-		tp_thumb_update_touch(tp, t, time);
-		tp_palm_detect(tp, t, time);
+		/* tp_thumb_update_touch(tp, t, time); */
+		/* tp_palm_detect(tp, t, time); */
 		tp_detect_wobbling(tp, t, time);
 		tp_motion_hysteresis(tp, t);
 		tp_motion_history_push(t, time);
@@ -3445,6 +3445,7 @@ tp_init_palmdetect(struct tp_dispatch *tp,
 
 	tp_init_palmdetect_arbitration(tp, device);
 
+	return;
 	if (device->tags & EVDEV_TAG_EXTERNAL_TOUCHPAD &&
 	    !tp_is_tpkb_combo_below(device) &&
 	    !tp_is_tablet(device))

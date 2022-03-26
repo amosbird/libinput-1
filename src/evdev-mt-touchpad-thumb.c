@@ -393,6 +393,7 @@ tp_init_thumb(struct tp_dispatch *tp)
 
 	tp->thumb.detect_thumbs = false;
 
+	return;
 	if (!tp->buttons.is_clickpad)
 		return;
 
