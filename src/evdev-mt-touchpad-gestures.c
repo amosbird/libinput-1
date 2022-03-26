@@ -505,7 +505,6 @@ tp_gesture_is_quick_hold(struct tp_dispatch *tp)
 static bool
 tp_gesture_use_hold_timer(struct tp_dispatch *tp)
 {
-	return true;
 	/* When tap is not enabled, always use the timer */
 	if (!tp->tap.enabled)
 		return true;
@@ -1521,7 +1520,7 @@ tp_init_gesture(struct tp_dispatch *tp)
 	tp->gesture.enabled = tp_gesture_are_gestures_enabled(tp);
 
 	tp->gesture.state = GESTURE_STATE_NONE;
-	tp->gesture.hold_enabled = tp_gesture_are_gestures_enabled(tp);
+	/* tp->gesture.hold_enabled = tp_gesture_are_gestures_enabled(tp); */
 
 	snprintf(timer_name,
 		 sizeof(timer_name),
@@ -1532,14 +1531,14 @@ tp_init_gesture(struct tp_dispatch *tp)
 			    timer_name,
 			    tp_gesture_finger_count_switch_timeout, tp);
 
-	snprintf(timer_name,
-		 sizeof(timer_name),
-		 "%s hold",
-		 evdev_device_get_sysname(tp->device));
-	libinput_timer_init(&tp->gesture.hold_timer,
-			    tp_libinput_context(tp),
-			    timer_name,
-			    tp_gesture_hold_timeout, tp);
+	/* snprintf(timer_name, */
+	/* 	 sizeof(timer_name), */
+	/* 	 "%s hold", */
+	/* 	 evdev_device_get_sysname(tp->device)); */
+	/* libinput_timer_init(&tp->gesture.hold_timer, */
+	/* 		    tp_libinput_context(tp), */
+	/* 		    timer_name, */
+	/* 		    tp_gesture_hold_timeout, tp); */
 }
 
 void
