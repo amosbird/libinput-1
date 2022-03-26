@@ -1747,15 +1747,15 @@ tp_process_state(struct tp_dispatch *tp, uint64_t time)
 			continue;
 		}
 
-		if (tp_detect_jumps(tp, t, time)) {
-			if (!tp->semi_mt)
-				evdev_log_bug_kernel_ratelimit(tp->device,
-						&tp->jump.warning,
-					        "Touch jump detected and discarded.\n"
-					        "See %s/touchpad-jumping-cursors.html for details\n",
-					        HTTP_DOC_LINK);
-			tp_motion_history_reset(t);
-		}
+		/* if (tp_detect_jumps(tp, t, time)) { */
+		/* 	if (!tp->semi_mt) */
+		/* 		evdev_log_bug_kernel_ratelimit(tp->device, */
+		/* 				&tp->jump.warning, */
+		/* 			        "Touch jump detected and discarded.\n" */
+		/* 			        "See %s/touchpad-jumping-cursors.html for details\n", */
+		/* 			        HTTP_DOC_LINK); */
+		/* 	tp_motion_history_reset(t); */
+		/* } */
 
 		tp_thumb_update_touch(tp, t, time);
 		tp_palm_detect(tp, t, time);
